@@ -101,6 +101,7 @@ public class CounterActivity
     findViewById(R.id.btnReset).setEnabled(viewModel.resetEnabled);
   }
 
+
   @Override
   public void injectPresenter(CounterContract.Presenter presenter) {
     this.presenter = presenter;

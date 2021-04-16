@@ -58,7 +58,9 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onRestart()");
 
     // update the model if is necessary
-    model.onRestartScreen(state.counter);
+    //model.onRestartScreen(state.counter);
+    model.setCounter(state.counter);
+    view.get().onDataUpdated(state);
   }
 
   @Override
@@ -110,6 +112,10 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onResetPressed() {
     // Log.e(TAG, "onResetPressed()");
+    state.counter = COUNTER_A_CERO;
+    model.setCounter(state.counter);
+    enableResetButton();
+    onRestart();
   }
 
   @Override
@@ -117,6 +123,8 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onIncrementPressed()");
     state.counter = state.counter + 1;
     counterMayorDeNueve(state.counter);
+    model.setCounter(state.counter);
+    enableResetButton();
     onRestart();
   }
 
