@@ -24,9 +24,9 @@ public interface ClicksContract {
   }
 
   interface Model {
-    String getStoredData();
-    void onDataFromNextScreen(String data);
-    void onRestartScreen(String data);
-    void onDataFromPreviousScreen(String data);
+    int getStoredData();
+    void onDataFromNextScreen(int data);
+    void onRestartScreen(int data);
+    void onDataFromPreviousScreen(int data);
   }
 }

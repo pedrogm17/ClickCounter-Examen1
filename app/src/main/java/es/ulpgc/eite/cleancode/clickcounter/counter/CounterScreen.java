@@ -14,7 +14,7 @@ public class CounterScreen {
     WeakReference<FragmentActivity> context =
         new WeakReference<>((FragmentActivity) view);
 
-    String data = context.get().getString(R.string.app_name);
+    int data = 0;
 
     AppMediator mediator = AppMediator.getInstance();
 

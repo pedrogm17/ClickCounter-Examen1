@@ -1,30 +1,33 @@
 package es.ulpgc.eite.cleancode.clickcounter.counter;
 
-import android.util.Log;
-
 public class CounterModel implements CounterContract.Model {
 
   public static String TAG = CounterModel.class.getSimpleName();
 
-  private String data;
+  private int counter;
 
-  public CounterModel(String data) {
-    this.data = data;
+  public CounterModel(int counter) {
+    this.counter = counter;
   }
 
   @Override
-  public String getStoredData() {
+  public int getStoredData() {
     // Log.e(TAG, "getStoredData()");
-    return data;
+    return counter;
   }
 
   @Override
-  public void onRestartScreen(String data) {
+  public void setCounter(int counter){
+    this.counter = counter;
+  }
+
+  @Override
+  public void onRestartScreen(int data) {
     // Log.e(TAG, "onRestartScreen()");
   }
 
   @Override
-  public void onDataFromNextScreen(String data) {
+  public void onDataFromNextScreen(int data) {
     // Log.e(TAG, "onDataFromNextScreen()");
   }
 

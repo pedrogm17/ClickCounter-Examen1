@@ -1,35 +1,33 @@
 package es.ulpgc.eite.cleancode.clickcounter.clicks;
 
-import android.util.Log;
-
 public class ClicksModel implements ClicksContract.Model {
 
   public static String TAG = ClicksModel.class.getSimpleName();
 
-  private String data;
+  private int data;
 
-  public ClicksModel(String data) {
+  public ClicksModel(int data) {
     this.data = data;
   }
 
   @Override
-  public String getStoredData() {
+  public int getStoredData() {
     // Log.e(TAG, "getStoredData()");
     return data;
   }
 
   @Override
-  public void onRestartScreen(String data) {
+  public void onRestartScreen(int data) {
     // Log.e(TAG, "onRestartScreen()");
   }
 
   @Override
-  public void onDataFromNextScreen(String data) {
+  public void onDataFromNextScreen(int data) {
     // Log.e(TAG, "onDataFromNextScreen()");
   }
 
   @Override
-  public void onDataFromPreviousScreen(String data) {
+  public void onDataFromPreviousScreen(int data) {
     // Log.e(TAG, "onDataFromPreviousScreen()");
   }
 }

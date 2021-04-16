@@ -29,16 +29,17 @@ public interface CounterContract {
     void onResetPressed();
     void onIncrementPressed();
 
-    void counterMayorDeNueve(String counter);
+    void counterMayorDeNueve(int counter);
     void enableResetButton();
     void enableClicksButton();
   }
 
   interface Model {
-    String getStoredData();
-    void onDataFromNextScreen(String data);
-    void onRestartScreen(String data);
+    int getStoredData();
+    void onDataFromNextScreen(int data);
+    void onRestartScreen(int data);
     void onDataFromPreviousScreen(String data);
+    void setCounter(int counter);
   }
 
 }

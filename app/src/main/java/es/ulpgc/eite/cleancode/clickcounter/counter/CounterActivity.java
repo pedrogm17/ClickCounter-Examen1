@@ -37,6 +37,7 @@ public class CounterActivity
     } else {
       presenter.onRestart();
     }
+
   }
 
   @Override
@@ -93,7 +94,7 @@ public class CounterActivity
     //Log.e(TAG, "onDataUpdated()");
 
     // deal with the data
-    ((TextView) findViewById(R.id.tvCounter)).setText(viewModel.counter);
+    ((TextView) findViewById(R.id.tvCounter)).setText(String.valueOf(viewModel.counter));
 
     findViewById(R.id.btnIncrement).setEnabled(viewModel.incrementEnable);
     findViewById(R.id.btnClicks).setEnabled(viewModel.clicksEnabled);

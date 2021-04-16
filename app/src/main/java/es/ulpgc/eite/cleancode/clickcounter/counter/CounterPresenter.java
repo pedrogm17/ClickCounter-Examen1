@@ -16,7 +16,7 @@ public class CounterPresenter implements CounterContract.Presenter {
 
   private AppMediator mediator;
 
-  public String COUNTER_A_CERO = "0";
+  public int COUNTER_A_CERO = 0;
 
   public CounterPresenter(AppMediator mediator) {
     this.mediator = mediator;
@@ -34,6 +34,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     }
 
     // call the model and update the state
+    model.setCounter(COUNTER_A_CERO);
     state.counter = model.getStoredData();
     enableClicksButton();
     enableResetButton();
@@ -109,7 +110,6 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onResetPressed() {
     // Log.e(TAG, "onResetPressed()");
-    state.counter = COUNTER_A_CERO;
   }
 
   @Override
@@ -117,6 +117,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onIncrementPressed()");
     state.counter = state.counter + 1;
     counterMayorDeNueve(state.counter);
+    onRestart();
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {
@@ -137,15 +138,15 @@ public class CounterPresenter implements CounterContract.Presenter {
     this.model = model;
   }
   @Override
-  public void counterMayorDeNueve(String counter){
-    if(counter.equals("10")){
+  public void counterMayorDeNueve(int counter){
+    if(counter > 9){
       onResetPressed();
     }else {    }
   }
 
   @Override
   public void enableResetButton(){
-    if (state.counter.equals("0")){
+    if (state.counter == 0){
       state.resetEnabled = false;
     }else{
       state.resetEnabled = true;
