@@ -56,6 +56,7 @@ public class ClicksPresenter implements ClicksContract.Presenter {
 
     // update the model if is necessary
     model.onRestartScreen(state.data);
+    view.get().onDataUpdated(state);
   }
 
 
