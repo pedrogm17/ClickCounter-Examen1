@@ -16,7 +16,7 @@ public class CounterPresenter implements CounterContract.Presenter {
 
   private AppMediator mediator;
 
-  public int COUNTER_A_CERO = 0;
+  private final int COUNTER_A_CERO = 0;
 
   public CounterPresenter(AppMediator mediator) {
     this.mediator = mediator;
@@ -128,6 +128,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     enableClicksButton();
     onRestart();
   }
+
 
   private void passStateToNextScreen(CounterToClicksState state) {
     mediator.setCounterNextScreenState(state);

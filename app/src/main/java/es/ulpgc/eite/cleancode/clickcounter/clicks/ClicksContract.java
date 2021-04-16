@@ -21,10 +21,13 @@ public interface ClicksContract {
     void onPause();
     void onDestroy();
     void onClearPressed();
+
+    void enableResetButton();
   }
 
   interface Model {
     int getStoredData();
+    void setClicks(int clicks);
     void onDataFromNextScreen(int data);
     void onRestartScreen(int data);
     void onDataFromPreviousScreen(int data);

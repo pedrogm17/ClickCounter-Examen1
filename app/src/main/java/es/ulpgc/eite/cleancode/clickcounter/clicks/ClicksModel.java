@@ -17,6 +17,11 @@ public class ClicksModel implements ClicksContract.Model {
   }
 
   @Override
+  public void setClicks(int clicks){
+    this.data = clicks;
+  }
+
+  @Override
   public void onRestartScreen(int data) {
     // Log.e(TAG, "onRestartScreen()");
   }

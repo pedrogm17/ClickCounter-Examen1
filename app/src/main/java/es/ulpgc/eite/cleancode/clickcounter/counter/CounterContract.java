@@ -2,6 +2,8 @@ package es.ulpgc.eite.cleancode.clickcounter.counter;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.cleancode.clickcounter.app.CounterToClicksState;
+
 
 public interface CounterContract {
 
@@ -32,6 +34,7 @@ public interface CounterContract {
     void counterMayorDeNueve(int counter);
     void enableResetButton();
     void enableClicksButton();
+
   }
 
   interface Model {

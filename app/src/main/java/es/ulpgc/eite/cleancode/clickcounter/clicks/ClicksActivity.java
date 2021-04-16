@@ -71,7 +71,7 @@ public class ClicksActivity
     //Log.e(TAG, "onDataUpdated()");
 
     // deal with the data
-    ((TextView) findViewById(R.id.tvClicks)).setText(viewModel.data);
+    ((TextView) findViewById(R.id.tvClicks)).setText(String.valueOf(viewModel.data));
   }
 
   @Override

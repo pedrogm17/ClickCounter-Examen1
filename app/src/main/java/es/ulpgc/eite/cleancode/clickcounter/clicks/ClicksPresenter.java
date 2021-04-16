@@ -15,6 +15,8 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   private ClicksContract.Model model;
   private AppMediator mediator;
 
+  private final int COUNTER_A_CERO = 0;
+
   public ClicksPresenter(AppMediator mediator) {
     this.mediator = mediator;
     state = mediator.getClicksState();
@@ -31,18 +33,21 @@ public class ClicksPresenter implements ClicksContract.Presenter {
     }
 
     // call the model and update the state
+    model.setClicks(mediator.getCounterState().counter);
     state.data = model.getStoredData();
+    enableResetButton();
+
 
     // use passed state if is necessary
-    CounterToClicksState savedState = getStateFromPreviousScreen();
-    if (savedState != null) {
-
-      // update the model if is necessary
-      model.onDataFromPreviousScreen(savedState.data);
-
-      // update the state if is necessary
-      state.data = savedState.data;
-    }
+//    CounterToClicksState savedState = getStateFromPreviousScreen();
+//    if (savedState != null) {
+//
+//      // update the model if is necessary
+//      model.onDataFromPreviousScreen(savedState.data);
+//
+//      // update the state if is necessary
+//      state.data = savedState.data;
+//    }
   }
 
   @Override
@@ -97,6 +102,10 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onClearPressed() {
     // Log.e(TAG, "onClearPressed()");
+    state.data = COUNTER_A_CERO;
+    model.setClicks(state.data);
+    enableResetButton();
+    onRestart();
   }
 
   private void passStateToPreviousScreen(ClicksToCounterState state) {
@@ -115,6 +124,15 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void injectModel(ClicksContract.Model model) {
     this.model = model;
+  }
+
+  @Override
+  public void enableResetButton(){
+    if (state.data == 0){
+      state.resetEnabled = false;
+    }else{
+      state.resetEnabled = true;
+    }
   }
 
 }
