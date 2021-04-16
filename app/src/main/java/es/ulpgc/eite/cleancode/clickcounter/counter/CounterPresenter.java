@@ -125,6 +125,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     counterMayorDeNueve(state.counter);
     model.setCounter(state.counter);
     enableResetButton();
+    enableClicksButton();
     onRestart();
   }
 
@@ -163,12 +164,12 @@ public class CounterPresenter implements CounterContract.Presenter {
 
   @Override
   public void enableClicksButton(){
-//    int clicks = mediator.getClicksState().data;
-//    if ( clicks == 0){
-//      state.resetEnabled = false;
-//    }else{
-//      state.resetEnabled = true;
-//    }
+    int clicks = mediator.getClicksState().data;
+    if ( (clicks == 0)&&(state.counter == 0) ){
+      state.clicksEnabled = false;
+    }else{
+      state.clicksEnabled = true;
+    }
   }
 
 
