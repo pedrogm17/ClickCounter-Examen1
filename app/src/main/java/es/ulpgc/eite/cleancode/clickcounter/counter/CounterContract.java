@@ -28,6 +28,10 @@ public interface CounterContract {
     void onClicksPressed();
     void onResetPressed();
     void onIncrementPressed();
+
+    void counterMayorDeNueve(String counter);
+    void enableResetButton();
+    void enableClicksButton();
   }
 
   interface Model {

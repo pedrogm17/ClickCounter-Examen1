@@ -93,14 +93,11 @@ public class CounterActivity
     //Log.e(TAG, "onDataUpdated()");
 
     // deal with the data
-    ((TextView) findViewById(R.id.tvCounter)).setText(viewModel.data);
-    ((TextView) findViewById(R.id.btnIncrement)).setText(viewModel.increment);
-    ((TextView) findViewById(R.id.btnClicks)).setText(viewModel.reset);
-    ((TextView) findViewById(R.id.btnReset)).setText(viewModel.clicks);
+    ((TextView) findViewById(R.id.tvCounter)).setText(viewModel.counter);
 
     findViewById(R.id.btnIncrement).setEnabled(viewModel.incrementEnable);
-    findViewById(R.id.btnClicks).setEnabled(viewModel.incrementEnable);
-    findViewById(R.id.btnReset).setEnabled(viewModel.incrementEnable);
+    findViewById(R.id.btnClicks).setEnabled(viewModel.clicksEnabled);
+    findViewById(R.id.btnReset).setEnabled(viewModel.resetEnabled);
   }
 
   @Override

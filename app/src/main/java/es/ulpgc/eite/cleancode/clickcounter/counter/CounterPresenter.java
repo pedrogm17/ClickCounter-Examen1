@@ -16,6 +16,8 @@ public class CounterPresenter implements CounterContract.Presenter {
 
   private AppMediator mediator;
 
+  public String COUNTER_A_CERO = "0";
+
   public CounterPresenter(AppMediator mediator) {
     this.mediator = mediator;
     state = mediator.getCounterState();
@@ -32,7 +34,9 @@ public class CounterPresenter implements CounterContract.Presenter {
     }
 
     // call the model and update the state
-    state.data = model.getStoredData();
+    state.counter = model.getStoredData();
+    enableClicksButton();
+    enableResetButton();
 
     /*
     // use passed state if is necessary
@@ -53,7 +57,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onRestart()");
 
     // update the model if is necessary
-    model.onRestartScreen(state.data);
+    model.onRestartScreen(state.counter);
   }
 
   @Override
@@ -68,7 +72,7 @@ public class CounterPresenter implements CounterContract.Presenter {
       model.onDataFromNextScreen(savedState.data);
 
       // update the state if is necessary
-      state.data = savedState.data;
+      state.counter = savedState.data;
     }
 
     // call the model and update the state
@@ -98,16 +102,21 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onClicksPressed() {
     // Log.e(TAG, "onClicksPressed()");
+    view.get().navigateToNextScreen();
+
   }
 
   @Override
   public void onResetPressed() {
     // Log.e(TAG, "onResetPressed()");
+    state.counter = COUNTER_A_CERO;
   }
 
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
+    state.counter = state.counter + 1;
+    counterMayorDeNueve(state.counter);
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {
@@ -127,5 +136,31 @@ public class CounterPresenter implements CounterContract.Presenter {
   public void injectModel(CounterContract.Model model) {
     this.model = model;
   }
+  @Override
+  public void counterMayorDeNueve(String counter){
+    if(counter.equals("10")){
+      onResetPressed();
+    }else {    }
+  }
+
+  @Override
+  public void enableResetButton(){
+    if (state.counter.equals("0")){
+      state.resetEnabled = false;
+    }else{
+      state.resetEnabled = true;
+    }
+  }
+
+  @Override
+  public void enableClicksButton(){
+//    int clicks = mediator.getClicksState().data;
+//    if ( clicks == 0){
+//      state.resetEnabled = false;
+//    }else{
+//      state.resetEnabled = true;
+//    }
+  }
+
 
 }
