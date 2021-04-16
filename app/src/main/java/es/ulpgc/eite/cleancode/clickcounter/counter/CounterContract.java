@@ -10,6 +10,7 @@ public interface CounterContract {
 
     void navigateToNextScreen();
     void onDataUpdated(CounterViewModel viewModel);
+
   }
 
   interface Presenter {
